@@ -1,4 +1,4 @@
-﻿using System.Web;
+using System.Web;
 
 namespace GenericTypeAsAFactory.Demo.Utility
 {
@@ -9,19 +9,13 @@ namespace GenericTypeAsAFactory.Demo.Utility
         /// </summary>
         /// <param name="value">數值</param>
         /// <returns></returns>
-        public static string HtmlEncode(this string value)
-        {
-            return HttpUtility.HtmlEncode(value);
-        }
+        public static string HtmlEncode(this string value) => HttpUtility.HtmlEncode(value);
 
         /// <summary>
         /// HTML 解碼
         /// </summary>
         /// <param name="value">數值</param>
         /// <returns></returns>
-        public static string HtmlDecode(this string value)
-        {
-            return HttpUtility.HtmlDecode(value);
-        }
+        public static string HtmlDecode(this string value) => HttpUtility.HtmlDecode(value);
     }
 }

@@ -12,42 +12,34 @@ namespace GenericTypeAsAFactory.Demo
     {
         public IConfiguration Configuration { get; }
 
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+        public Startup(IConfiguration configuration) => Configuration = configuration;
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
 
-            // µù¥U IDemoService (¹ê»Úª`¤J DemoService)
+            // è¨»å†Š IDemoService (å¯¦éš›æ³¨å…¥ DemoService)
             services.AddTransient<IDemoService, DemoService>();
 
-            // µù¥U IServiceFactory
+            // è¨»å†Š IServiceFactory
             services.AddTransient(typeof(IServiceFactory<>), typeof(ServiceFactory<>));
 
-            // 1. ¥H©¹¼g Factory ¥i¯à³£¬O¶}¤@­ÓÃþ§O¼g Create ¤èªk¡A¦ý­Y·f°t DI ¾÷¨î¥i¥H¼g¤@­Ó¸û³q¥Îªº Factory¡A¦Ó¥BÁÙ¤£¥Î¼g¨ì¤èªk...
-            // 2. ¦¹ Factory §Q¥Î IServiceProvider ¥i¨ú±o¤wµù¥U¦Ü DI ®e¾¹ªº TService ¤§¥~¡A­Y¤£¦s¦b©ó DI ®e¾¹ªº TService ¤]¯à°÷³Ð«Ø·s¹ê¨Ò...
+            // 1. ä»¥å¾€å¯« Factory å¯èƒ½éƒ½æ˜¯é–‹ä¸€å€‹é¡žåˆ¥å¯« Create æ–¹æ³•ï¼Œä½†è‹¥æ­é… DI æ©Ÿåˆ¶å¯ä»¥å¯«ä¸€å€‹è¼ƒé€šç”¨çš„ Factoryï¼Œè€Œä¸”é‚„ä¸ç”¨å¯«åˆ°æ–¹æ³•...
+            // 2. æ­¤ Factory åˆ©ç”¨ IServiceProvider å¯å–å¾—å·²è¨»å†Šè‡³ DI å®¹å™¨çš„ TService ä¹‹å¤–ï¼Œè‹¥ä¸å­˜åœ¨æ–¼ DI å®¹å™¨çš„ TService ä¹Ÿèƒ½å¤ å‰µå»ºæ–°å¯¦ä¾‹...
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
-            {
                 app.UseDeveloperExceptionPage();
-            }
 
             app.UseRouting();
 
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => endpoints.MapControllers());
         }
     }
 }

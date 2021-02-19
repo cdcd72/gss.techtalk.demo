@@ -1,4 +1,4 @@
-﻿using GenericTypeAsAFactory.Demo.Services;
+using GenericTypeAsAFactory.Demo.Services;
 using GenericTypeAsAFactory.Demo.Utility;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,9 +18,6 @@ namespace GenericTypeAsAFactory.Demo.Controllers
         }
 
         [HttpGet]
-        public string Get()
-        {
-            return $"{demoService.GetValue()} {anotherService.GetValue()}".HtmlEncode();
-        }
+        public string Get() => $"{demoService.GetValue()} {anotherService.GetValue()}".HtmlEncode();
     }
 }

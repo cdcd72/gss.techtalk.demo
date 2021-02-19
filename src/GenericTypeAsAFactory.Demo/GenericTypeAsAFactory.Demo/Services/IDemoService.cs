@@ -1,4 +1,4 @@
-﻿namespace GenericTypeAsAFactory.Demo.Services
+namespace GenericTypeAsAFactory.Demo.Services
 {
     public interface IDemoService
     {
