@@ -14,6 +14,7 @@ namespace LazyInitializationOfServices.Demo.Controllers
         public DemoController(ILazy<IDemoService> demoService, ILazy<AnotherService> anotherService)
         {
             // 有時候會希望延遲實例初始化，這時就可以善用 Lazy<T> (https://docs.microsoft.com/zh-tw/dotnet/api/system.lazy-1?view=netcore-3.1)
+			// PS. 但要注意千萬別在建構子去 demoService.Value 初始化物件，這樣相當於是注入 ServiceProvider 並 GetService<demoService>() 的行為，被視為是 Anti Pattern...
             this.demoService = demoService;
             this.anotherService = anotherService;
         }
