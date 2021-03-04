@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataProtectionAPI.Demo", "DataProtectionAPI.Demo\DataProtectionAPI.Demo.csproj", "{594AF256-928D-4249-A6C1-3F60A8276C34}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{594AF256-928D-4249-A6C1-3F60A8276C34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{594AF256-928D-4249-A6C1-3F60A8276C34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{594AF256-928D-4249-A6C1-3F60A8276C34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{594AF256-928D-4249-A6C1-3F60A8276C34}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {415D284D-E012-41DC-996E-E848760F2334}
+	EndGlobalSection
+EndGlobal
