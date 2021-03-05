@@ -29,7 +29,7 @@ namespace DataProtectionAPI.Demo
             // 註冊 DPAPI
             services.AddDataProtection()
                     // 保存私鑰至本機
-                    .PersistKeysToFileSystem(new DirectoryInfo(Configuration.GetValue<string>("keyPath")));
+                    .PersistKeysToFileSystem(new DirectoryInfo(Configuration.GetValue<string>("Security:KeyPath")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
