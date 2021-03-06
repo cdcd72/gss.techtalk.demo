@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace DataProtectionAPI.Demo.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class CryptoController : ControllerBase
     {
         private readonly IDbSettingsResolved dbSettingsResolved;
