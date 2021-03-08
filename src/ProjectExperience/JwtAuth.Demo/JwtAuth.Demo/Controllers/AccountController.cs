@@ -54,7 +54,7 @@ namespace JwtAuth.Demo.Controllers
             });
         }
 
-        [HttpPost("[action]")]
+        [HttpGet("[action]")]
         public ActionResult Logout()
         {
             var userName = User.Identity.Name;
@@ -70,10 +70,10 @@ namespace JwtAuth.Demo.Controllers
         {
             try
             {
-                var userName = User.Identity.Name;
-
                 if (string.IsNullOrWhiteSpace(request.RefreshToken))
-                    return Unauthorized();
+                    return BadRequest();
+
+                var userName = User.Identity.Name;
 
                 var accessToken = await HttpContext.GetTokenAsync("Bearer", "access_token");
 
