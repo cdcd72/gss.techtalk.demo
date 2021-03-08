@@ -28,6 +28,7 @@ namespace DataProtectionAPI.Demo
             services.AddScoped<IDbSettingsResolved, DbSettingsBridge>();
             // 註冊 DPAPI
             services.AddDataProtection()
+                    .SetApplicationName("Demo")
                     // 保存私鑰至本機
                     .PersistKeysToFileSystem(new DirectoryInfo(Configuration.GetValue<string>("Security:KeyPath")));
         }

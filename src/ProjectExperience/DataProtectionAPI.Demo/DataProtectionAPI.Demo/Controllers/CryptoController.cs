@@ -1,4 +1,4 @@
-using DataProtectionAPI.Demo.Configuration;
+using DataProtectionAPI.Demo.Dto;
 using DataProtectionAPI.Demo.Security;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Mvc;
@@ -9,25 +9,35 @@ namespace DataProtectionAPI.Demo.Controllers
     [Route("api/[controller]")]
     public class CryptoController : ControllerBase
     {
-        private readonly IDbSettingsResolved dbSettingsResolved;
         private readonly IDataProtector protector;
 
-        public CryptoController(IDbSettingsResolved dbSettingsResolved, IDataProtectionProvider dataProtectionProvider)
-        {
-            this.dbSettingsResolved = dbSettingsResolved;
-
+        public CryptoController(IDataProtectionProvider dataProtectionProvider) =>
             protector = dataProtectionProvider.CreateProtector(DataProtectionPurposeStrings.DbPassword);
+
+        [HttpPost]
+        [Route("[action]")]
+        public ActionResult Encrypt([FromBody] EncryptRequest encryptRequest)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            return Ok(new EncryptResult()
+            {
+                Text = protector.Protect(encryptRequest.Text)
+            });
         }
 
-        [HttpGet]
-        public IDbSettingsResolved Get() => dbSettingsResolved;
-
         [HttpPost]
         [Route("[action]")]
-        public string Encrypt(string text) => protector.Protect(text);
+        public ActionResult Decrypt([FromBody] DecryptRequest decryptRequest)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
 
-        [HttpPost]
-        [Route("[action]")]
-        public string Decrypt(string text) => protector.Unprotect(text);
+            return Ok(new DecryptResult()
+            {
+                Text = protector.Unprotect(decryptRequest.Text)
+            });
+        }
     }
 }
