@@ -1,8 +1,8 @@
 using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using JwtAuth.Demo.Dto;
 using JwtAuth.Demo.Helpers;
-using JwtAuth.Demo.Model;
 using JwtAuth.Demo.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
