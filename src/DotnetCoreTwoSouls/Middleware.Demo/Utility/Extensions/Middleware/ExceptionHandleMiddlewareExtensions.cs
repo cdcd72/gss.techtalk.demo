@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Utility.Middleware;
 
-namespace Utility.Extensions
+namespace Utility.Extensions.Middleware
 {
     public static class ExceptionHandleMiddlewareExtensions
     {

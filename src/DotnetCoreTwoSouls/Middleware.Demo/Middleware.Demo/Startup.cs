@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Utility.Extensions;
+using Utility.Extensions.Middleware;
 
 namespace Middleware.Demo
 {
@@ -26,7 +26,20 @@ namespace Middleware.Demo
 
             app.UseStaticFiles();
 
-            app.UseExceptionHandleMiddleware();
+            // 例外處理中介程序
+            app.UseExceptionHandleMiddleware()
+               // 使用 Content Security Policy 中介程序
+               .UseCsp(options =>
+               {
+                   options.Frames.Disallow();
+                   options.FrameAncestors.Disallow();
+                   options.Styles.AllowSelf();
+                   options.Scripts.AllowSelf();
+                   // options.Styles.AllowSelf().Allow("'unsafe-inline'"); -> 若要允許 css inline 程式碼，可以寫這樣...
+                   // options.Scripts.AllowSelf().Allow("'unsafe-inline'").Allow("'unsafe-eval'"); -> 若要允許 js inline 程式碼或讓它可執行，可以寫這樣...
+               })
+               // 使用 X-Frame-Options 中介程序
+               .UseXFrame(options => options.XFrame.Deny());
 
             app.UseRouting();
 
