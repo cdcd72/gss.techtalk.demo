@@ -1,8 +1,47 @@
-﻿@{
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<form action="api/file/upload"
+      enctype="multipart/form-data"
+      onsubmit="AJAXSubmit(this);return false;"
+      method="post">
+    <dl>
+        <dt>
+            <label for="file">測試檔案上傳</label>
+        </dt>
+        <dd>
+            <input id="file" type="file" name="files" multiple />
+        </dd>
+    </dl>
+
+    <input class="btn" type="submit" value="上傳" />
+
+    <div style="margin-top:15px">
+        <output name="result"></output>
+    </div>
+</form>
+
+<script>
+    async function AJAXSubmit(formElement) {
+
+        var resultElement = formElement.elements.namedItem("result");
+
+        // Form Data
+        const formData = new FormData(formElement);
+
+        try {
+            const response = await fetch(formElement.action, {
+                method: 'POST',
+                body: formData
+            });
+
+            console.log(response);
+
+            resultElement.value = `Result: ${response.status} ${response.statusText}`;
+
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+</script>

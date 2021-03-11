@@ -40,7 +40,7 @@ namespace Utility.Middleware
             // 記錄例外資訊
             _logger.LogError($"{ex}");
 
-            return context.Response.WriteAsync("Internal server error from the exception handle middleware.");
+            return context.Response.WriteAsync($"Internal server error from the exception handle middleware. exception message: {ex.Message}");
         }
     }
 }
