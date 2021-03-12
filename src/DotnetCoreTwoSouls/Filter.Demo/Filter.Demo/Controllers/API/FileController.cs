@@ -27,7 +27,8 @@ namespace Filter.Demo.Controllers.API
 
         [HttpPost]
         [Route("[action]")]
-        [AllowedFileSize(1024)]
+        [AllowedFileSize(104857600)]
+        [AllowedFileExtensions("jpg")]
         public async Task<IActionResult> Upload(List<IFormFile> files)
         {
             var storedFilesPath = config["StoredFilesPath"];
