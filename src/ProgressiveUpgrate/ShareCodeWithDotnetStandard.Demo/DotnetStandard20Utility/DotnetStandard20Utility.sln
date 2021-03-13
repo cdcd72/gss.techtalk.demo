@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotnetStandard20Utility", "DotnetStandard20Utility\DotnetStandard20Utility.csproj", "{CAD7152A-DD50-483C-82D0-EBCFC8A26A28}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CAD7152A-DD50-483C-82D0-EBCFC8A26A28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAD7152A-DD50-483C-82D0-EBCFC8A26A28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAD7152A-DD50-483C-82D0-EBCFC8A26A28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAD7152A-DD50-483C-82D0-EBCFC8A26A28}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {43BD412A-3515-4725-8159-5F991327A5A0}
+	EndGlobalSection
+EndGlobal
