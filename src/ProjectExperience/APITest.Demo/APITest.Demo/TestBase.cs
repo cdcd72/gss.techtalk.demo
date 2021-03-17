@@ -63,6 +63,8 @@ namespace APITest.Demo
 
         private IWebHostBuilder GetWebHostBuilder()
         {
+            // 在此處因為是在模擬載入 Configuration，所以才只會載入 appsettings.json & appsettings.Test.json
+            // 實際上這段在 .NET Core 背後就處理掉了，而且會依據執行環境的 ASPNETCORE_ENVIRONMENT 環境變數切換並載入組態設定...
             var configBuilder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json")
