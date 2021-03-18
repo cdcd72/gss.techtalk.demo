@@ -26,7 +26,7 @@ namespace LazyInitializationOfServices.Demo
             services.AddTransient<AnotherService>();
 
             // 註冊 Lazy Initialization Factory
-            services.AddTransient(typeof(ILazy<>), typeof(LazyFactory<>));
+            services.AddTransient(typeof(ILazyFactory<>), typeof(LazyFactory<>));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

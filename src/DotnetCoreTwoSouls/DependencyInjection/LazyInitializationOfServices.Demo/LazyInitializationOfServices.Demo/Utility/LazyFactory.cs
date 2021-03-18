@@ -7,7 +7,7 @@ namespace LazyInitializationOfServices.Demo.Utility
     /// Lazy Initialization Factory
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class LazyFactory<T> : ILazy<T>
+    public class LazyFactory<T> : ILazyFactory<T>
     {
         private readonly Lazy<T> lazy;
 
