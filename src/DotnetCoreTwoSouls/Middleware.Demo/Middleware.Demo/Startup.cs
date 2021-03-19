@@ -26,6 +26,10 @@ namespace Middleware.Demo
 
             app.UseStaticFiles();
 
+            app.UseRouting();
+
+            app.UseAuthorization();
+
             // 例外處理中介程序
             app.UseExceptionHandleMiddleware()
                // 使用 Content Security Policy 中介程序
@@ -40,10 +44,6 @@ namespace Middleware.Demo
                })
                // 使用 X-Frame-Options 中介程序
                .UseXFrame(options => options.XFrame.Deny());
-
-            app.UseRouting();
-
-            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

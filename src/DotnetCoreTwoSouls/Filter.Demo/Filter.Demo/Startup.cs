@@ -26,11 +26,11 @@ namespace Filter.Demo
 
             app.UseStaticFiles();
 
-            app.UseExceptionHandleMiddleware();
-
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseExceptionHandleMiddleware();
 
             app.UseEndpoints(endpoints =>
             {
