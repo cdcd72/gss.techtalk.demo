@@ -1,5 +1,4 @@
 using DotnetStandard20Utility.Factory;
-using DotnetStandard20Utility.Service;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DotnetCore21Web.Controllers.API
@@ -8,11 +7,16 @@ namespace DotnetCore21Web.Controllers.API
     [Route("api/[controller]")]
     public class DemoController : ControllerBase
     {
-        private readonly IDemoService demoService;
+        private readonly IDemoServiceFactory demoServiceFactory;
 
-        public DemoController(IDemoServiceFactory demoServiceFactory) => demoService = demoServiceFactory.Create();
+        public DemoController(IDemoServiceFactory demoServiceFactory) => this.demoServiceFactory = demoServiceFactory;
 
         [HttpGet]
-        public string Get() => demoService.GetValue();
+        public string Get()
+        {
+            var demoService = demoServiceFactory.Create();
+
+            return demoService.GetValue();
+        }
     }
 }
