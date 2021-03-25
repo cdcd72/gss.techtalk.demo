@@ -41,6 +41,9 @@ namespace RecordType.Demo
 
             Console.WriteLine("=========================================================================");
 
+            // Error to modify p1 record, because of init accessors...
+            //p1.FirstName = "Pekora";
+
             // Use "with" expression to copy record and modify value (like prototype pattern...)
             var p3 = p1 with { FirstName = "Pekora" };
 
@@ -50,8 +53,8 @@ namespace RecordType.Demo
 
     //public record Person
     //{
-    //    public string LastName { get; }
-    //    public string FirstName { get; }
+    //    public string LastName { get; init; }
+    //    public string FirstName { get; init; }
 
     //    public Person(string first, string last) => (FirstName, LastName) = (first, last);
     //}
@@ -60,7 +63,7 @@ namespace RecordType.Demo
 
     //public record Teacher : Person
     //{
-    //    public string Subject { get; }
+    //    public string Subject { get; init; }
 
     //    public Teacher(string first, string last, string sub)
     //        : base(first, last) => Subject = sub;
@@ -70,7 +73,7 @@ namespace RecordType.Demo
 
     //public sealed record Student : Person
     //{
-    //    public int Level { get; }
+    //    public int Level { get; init; }
 
     //    public Student(string first, string last, int level) : base(first, last) => Level = level;
     //}
