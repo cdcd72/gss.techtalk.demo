@@ -34,17 +34,17 @@ namespace RecordType.Demo
 
             Console.WriteLine("=========================================================================");
 
-            // Deconstruct (解構)
+            // 若為有效的記錄類型(Record Type)，就可以使用解構方式(Deconstruct)讀取內部屬性值...
             var (firstName, lastName) = p1;
 
             Console.WriteLine("{0} {1}", firstName, lastName);
 
             Console.WriteLine("=========================================================================");
 
-            // Error to modify p1 record, because of init accessors...
+            // 沒辦法修改 p1 記錄(Record)，因為 init 存取子關係...
             //p1.FirstName = "Pekora";
 
-            // Use "with" expression to copy record and modify value (like prototype pattern...)
+            // 若為有效的記錄類型(Record Type)，就可以用 with 運算式"複製"記錄(Record)並修改內部屬性值 (很像 prototype pattern...)
             var p3 = p1 with { FirstName = "Pekora" };
 
             Console.WriteLine("{0} {1}", p3.FirstName, p3.LastName);
@@ -53,8 +53,8 @@ namespace RecordType.Demo
 
     //public record Person
     //{
-    //    public string LastName { get; init; }
     //    public string FirstName { get; init; }
+    //    public string LastName { get; init; }
 
     //    public Person(string first, string last) => (FirstName, LastName) = (first, last);
     //}
