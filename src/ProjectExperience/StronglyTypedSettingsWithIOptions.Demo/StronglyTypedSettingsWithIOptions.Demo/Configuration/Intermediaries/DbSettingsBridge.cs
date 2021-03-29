@@ -16,10 +16,7 @@ namespace StronglyTypedSettingsWithIOptions.Demo.Configuration
 
         public DbSettingsBridge(IOptionsSnapshot<DbSettings> dbSettings, ISettingsValidator<DbSettings> validator)
         {
-            this.dbSettings = dbSettings ?? throw new ArgumentNullException(nameof(dbSettings));
-
-            if (validator == null)
-                throw new ArgumentNullException(nameof(validator));
+            this.dbSettings = dbSettings;
 
             if (!validator.TryValidate(dbSettings.Value, out var validationException))
                 throw validationException;
