@@ -16,27 +16,27 @@ namespace DataProtectionAPI.Demo.Controllers
 
         [HttpPost]
         [Route("[action]")]
-        public ActionResult Encrypt([FromBody] EncryptRequest encryptRequest)
+        public ActionResult Encrypt([FromBody] CommonRequest commonRequest)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
 
             return Ok(new EncryptResult()
             {
-                Text = protector.Protect(encryptRequest.Text)
+                Text = protector.Protect(commonRequest.Text)
             });
         }
 
         [HttpPost]
         [Route("[action]")]
-        public ActionResult Decrypt([FromBody] DecryptRequest decryptRequest)
+        public ActionResult Decrypt([FromBody] CommonRequest commonRequest)
         {
             if (!ModelState.IsValid)
                 return BadRequest();
 
             return Ok(new DecryptResult()
             {
-                Text = protector.Unprotect(decryptRequest.Text)
+                Text = protector.Unprotect(commonRequest.Text)
             });
         }
     }

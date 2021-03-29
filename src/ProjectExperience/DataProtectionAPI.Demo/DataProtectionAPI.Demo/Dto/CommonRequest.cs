@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace DataProtectionAPI.Demo.Dto
 {
-    public class DecryptRequest
+    public class CommonRequest
     {
         [Required]
         [JsonPropertyName("text")]
