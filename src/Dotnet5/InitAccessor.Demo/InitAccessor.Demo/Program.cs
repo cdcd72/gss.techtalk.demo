@@ -54,13 +54,12 @@ namespace InitAccessor.Demo
             // --- C# 9 "之後"不變性的可能做法 ---
 
             // 使用步驟 4 來初始化
-            // var x = new X() { Y = "Yee" }; // 沒辦法使用 Object Initializer 來初始化物件...
-            // var x = new X("Yee");          // 只能用 Constructor 來初始化物件...
+            // var x = new X() { Y = null };  // 可以使用 Object Initializer 來初始化物件...
             // x.Y = "Haha";                  // CS8852 error
 
             // 使用步驟 5 來初始化
-            var x = new X() { Y = "Yee" };    // 可以使用 Object Initializer 來初始化物件...
-            // x.Y = "Haha";                  // CS8852 error
+            var x = new X() { Y = null };     // 可以使用 Object Initializer 來初始化物件...
+            //x.Y = "Haha";                   // CS8852 error
         }
 
         /// <summary>
@@ -98,11 +97,6 @@ namespace InitAccessor.Demo
         //public class X
         //{
         //    public string Y { get; init; }
-
-        //    public X(string y)
-        //    {
-        //        Y = y;
-        //    }
         //}
 
         /// <summary>
@@ -115,7 +109,7 @@ namespace InitAccessor.Demo
             public string Y
             {
                 get => _y;
-                init => _y = (value ?? throw new ArgumentNullException(nameof(Y)));
+                init => _y = value ?? throw new ArgumentNullException(nameof(Y));
             }
         }
     }
